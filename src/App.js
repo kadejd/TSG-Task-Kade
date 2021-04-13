@@ -16,10 +16,10 @@ function App() {
     <Router>
     <TopNavBar />
       <Switch>
-        <Route path="/customerdetails/:id" exact component={CustomerDetails}/>
-        <Route path="/calls" exact component={Calls}/>
-        <Route path="/dashboard" exact component={Dashboard}/>
-        <Redirect to="/dashboard"/>
+        <Route path="/TSG-Task-Kade/customerdetails/:id" exact component={CustomerDetails}/>
+        <Route path="/TSG-Task-Kade/calls" exact component={Calls}/>
+        <Route path="/TSG-Task-Kade/dashboard" exact component={Dashboard}/>
+        <Redirect to="/TSG-Task-Kade/dashboard"/>
       </Switch>
     <ToastContainer />
     </Router>
