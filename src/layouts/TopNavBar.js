@@ -28,7 +28,7 @@ export function TopNavBar(){
       GetAllCustomers().then(response => {
         if(response.status === "OK")
         {
-          if(window.location.pathname.includes("/TSG-Task-Kade/customerdetails"))
+          if(window.location.pathname.includes("/customerdetails"))
           {
             var customerId = parseInt(window.location.pathname.slice(17))
             var currentCustomer = {id: 0, name: "Customers"} 
@@ -60,7 +60,7 @@ export function TopNavBar(){
       currentCustomer.id = customer.id;
       currentCustomer.name = customer.name
       setSelectedCustomer(currentCustomer);
-      window.location.assign('/TSG-Task-Kade/customerdetails/' + customer.id)
+      window.location.assign('/customerdetails/' + customer.id)
     }
     return(
         <div style={{fontSize: 20}}>
@@ -69,10 +69,10 @@ export function TopNavBar(){
             <Collapse isOpen={isOpen} navbar>
               <Nav className="mr-auto" navbar>
                 <NavItem>
-                  <NavLink style={{color: window.location.pathname.includes("/dashboard") == true ? "black" : "grey"}} href="/TSG-Task-Kade/Dashboard">Dashboard</NavLink>
+                  <NavLink style={{color: window.location.pathname.includes("/dashboard") == true ? "black" : "grey"}} href="/">Dashboard</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink style={{color: window.location.pathname.includes("/calls") == true ? "black" : "grey"}} href="/TSG-Task-Kade/calls">Calls</NavLink>
+                  <NavLink style={{color: window.location.pathname.includes("/calls") == true ? "black" : "grey"}} href="/calls">Calls</NavLink>
                 </NavItem>
                 <UncontrolledDropdown nav inNavbar>
                   <DropdownToggle style={{color: window.location.pathname.includes("/customerdetails") == true ? "black" : "grey"}}  nav caret>
