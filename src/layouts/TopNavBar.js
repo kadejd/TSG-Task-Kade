@@ -14,13 +14,15 @@ import {
     NavbarText
   } from 'reactstrap';
 import {GetAllCustomers} from '../utilities/axiosUtility'
+import { Link} from 'react-router-dom'
 
 
 export function TopNavBar(){
     const [isOpen, setIsOpen] = useState(false);
     const [customerList, setCustomerList] = useState([])
     const [SelectedCustomer, setSelectedCustomer] = useState({id: 0, name: "Customers"})
-
+    const [navSelected, setNavSelected] =  useState(0);
+    console.log(window.location.pathname)
     const toggle = () => setIsOpen(!isOpen);
 
     //Gets all customers to produce a customer list for drop down and sets customer name as title if valid id is passed. 
@@ -60,7 +62,7 @@ export function TopNavBar(){
       currentCustomer.id = customer.id;
       currentCustomer.name = customer.name
       setSelectedCustomer(currentCustomer);
-      window.location.assign('/customerdetails/' + customer.id)
+   
     }
     return(
         <div style={{fontSize: 20}}>
@@ -68,20 +70,20 @@ export function TopNavBar(){
             <NavbarToggler onClick={toggle} />
             <Collapse isOpen={isOpen} navbar>
               <Nav className="mr-auto" navbar>
-                <NavItem>
-                  <NavLink style={{color: window.location.pathname.includes("/dashboard") == true ? "black" : "grey"}} href="/">Dashboard</NavLink>
+                <NavItem >
+                  <NavLink onClick={() => setNavSelected(1)}><Link style={{color: navSelected == 1 ? "black" : "grey"}} to="/dashboard">Dashboard</Link></NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink style={{color: window.location.pathname.includes("/calls") == true ? "black" : "grey"}} href="/calls">Calls</NavLink>
+                  <NavLink onClick={() => setNavSelected(2)}><Link style={{color: navSelected == 2 ? "black" : "grey"}} to="/calls">Calls</Link></NavLink>
                 </NavItem>
                 <UncontrolledDropdown nav inNavbar>
-                  <DropdownToggle style={{color: window.location.pathname.includes("/customerdetails") == true ? "black" : "grey"}}  nav caret>
+                  <DropdownToggle style={{color: navSelected == 3 ? "black" : "grey"}}  nav caret>
                     {SelectedCustomer.name}
                   </DropdownToggle>
                   <DropdownMenu left={true}>
                     {customerList.map((customer, id) => {
                       return(
-                        <DropdownItem key={id} onClick={() => customerSelect(customer)}>{customer.name}</DropdownItem>
+                        <DropdownItem key={id} onClick={() => {customerSelect(customer); setNavSelected(3)}}><Link to={`/customerdetails/${customer.id}`}>{customer.name} </Link></DropdownItem>
                       )
                     })}
                   </DropdownMenu>
