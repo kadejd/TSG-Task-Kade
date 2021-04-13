@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/TSG-Task-Kade/static/css/main.70683c80.chunk.css",
-    "main.js": "/TSG-Task-Kade/static/js/main.c2b33ea2.chunk.js",
-    "main.js.map": "/TSG-Task-Kade/static/js/main.c2b33ea2.chunk.js.map",
-    "runtime-main.js": "/TSG-Task-Kade/static/js/runtime-main.86b49148.js",
-    "runtime-main.js.map": "/TSG-Task-Kade/static/js/runtime-main.86b49148.js.map",
-    "static/css/2.39051a21.chunk.css": "/TSG-Task-Kade/static/css/2.39051a21.chunk.css",
-    "static/js/2.151d86e1.chunk.js": "/TSG-Task-Kade/static/js/2.151d86e1.chunk.js",
-    "static/js/2.151d86e1.chunk.js.map": "/TSG-Task-Kade/static/js/2.151d86e1.chunk.js.map",
-    "static/js/3.7ce11d17.chunk.js": "/TSG-Task-Kade/static/js/3.7ce11d17.chunk.js",
-    "static/js/3.7ce11d17.chunk.js.map": "/TSG-Task-Kade/static/js/3.7ce11d17.chunk.js.map",
-    "index.html": "/TSG-Task-Kade/index.html",
-    "static/css/2.39051a21.chunk.css.map": "/TSG-Task-Kade/static/css/2.39051a21.chunk.css.map",
-    "static/css/main.70683c80.chunk.css.map": "/TSG-Task-Kade/static/css/main.70683c80.chunk.css.map",
-    "static/js/2.151d86e1.chunk.js.LICENSE.txt": "/TSG-Task-Kade/static/js/2.151d86e1.chunk.js.LICENSE.txt",
-    "static/media/logo.6ce24c58.svg": "/TSG-Task-Kade/static/media/logo.6ce24c58.svg"
+    "main.css": "/TSG-Task-Kade/dashboard/static/css/main.70683c80.chunk.css",
+    "main.js": "/TSG-Task-Kade/dashboard/static/js/main.aaaa1bff.chunk.js",
+    "main.js.map": "/TSG-Task-Kade/dashboard/static/js/main.aaaa1bff.chunk.js.map",
+    "runtime-main.js": "/TSG-Task-Kade/dashboard/static/js/runtime-main.ceeaaa93.js",
+    "runtime-main.js.map": "/TSG-Task-Kade/dashboard/static/js/runtime-main.ceeaaa93.js.map",
+    "static/css/2.39051a21.chunk.css": "/TSG-Task-Kade/dashboard/static/css/2.39051a21.chunk.css",
+    "static/js/2.151d86e1.chunk.js": "/TSG-Task-Kade/dashboard/static/js/2.151d86e1.chunk.js",
+    "static/js/2.151d86e1.chunk.js.map": "/TSG-Task-Kade/dashboard/static/js/2.151d86e1.chunk.js.map",
+    "static/js/3.7ce11d17.chunk.js": "/TSG-Task-Kade/dashboard/static/js/3.7ce11d17.chunk.js",
+    "static/js/3.7ce11d17.chunk.js.map": "/TSG-Task-Kade/dashboard/static/js/3.7ce11d17.chunk.js.map",
+    "index.html": "/TSG-Task-Kade/dashboard/index.html",
+    "static/css/2.39051a21.chunk.css.map": "/TSG-Task-Kade/dashboard/static/css/2.39051a21.chunk.css.map",
+    "static/css/main.70683c80.chunk.css.map": "/TSG-Task-Kade/dashboard/static/css/main.70683c80.chunk.css.map",
+    "static/js/2.151d86e1.chunk.js.LICENSE.txt": "/TSG-Task-Kade/dashboard/static/js/2.151d86e1.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/TSG-Task-Kade/dashboard/static/media/logo.6ce24c58.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.86b49148.js",
+    "static/js/runtime-main.ceeaaa93.js",
     "static/css/2.39051a21.chunk.css",
     "static/js/2.151d86e1.chunk.js",
     "static/css/main.70683c80.chunk.css",
-    "static/js/main.c2b33ea2.chunk.js"
+    "static/js/main.aaaa1bff.chunk.js"
   ]
 }
