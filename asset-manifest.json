@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/TSG-Task-Kade/static/css/main.70683c80.chunk.css",
-    "main.js": "/TSG-Task-Kade/static/js/main.e9f6bc82.chunk.js",
-    "main.js.map": "/TSG-Task-Kade/static/js/main.e9f6bc82.chunk.js.map",
+    "main.js": "/TSG-Task-Kade/static/js/main.35e8ce17.chunk.js",
+    "main.js.map": "/TSG-Task-Kade/static/js/main.35e8ce17.chunk.js.map",
     "runtime-main.js": "/TSG-Task-Kade/static/js/runtime-main.86b49148.js",
     "runtime-main.js.map": "/TSG-Task-Kade/static/js/runtime-main.86b49148.js.map",
     "static/css/2.39051a21.chunk.css": "/TSG-Task-Kade/static/css/2.39051a21.chunk.css",
@@ -21,6 +21,6 @@
     "static/css/2.39051a21.chunk.css",
     "static/js/2.151d86e1.chunk.js",
     "static/css/main.70683c80.chunk.css",
-    "static/js/main.e9f6bc82.chunk.js"
+    "static/js/main.35e8ce17.chunk.js"
   ]
 }
