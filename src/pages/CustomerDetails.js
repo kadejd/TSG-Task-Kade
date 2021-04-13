@@ -39,6 +39,10 @@ componentDidMount(){
 this.getAllCustomerDataById(this.props.match.params.id);
 }
 
+componentDidUpdate(){
+ 
+}
+
 //Toggles applications details modal
 toggleApplicationModal = () => {
     this.setState({applicationModalOpen: !this.state.applicationModalOpen})
@@ -251,6 +255,7 @@ filterByStatus = (status) => {
 
 //Renders the Calls table, using Button dropdowns for both filtering and setting a status.
 renderCallsTable(){
+  
     return(
         <Card>
             <CardBody style={{overflow: 'scroll', height: 760}}>
@@ -318,7 +323,7 @@ renderCallsTable(){
 
 render(){
     const modalTitleHeader = this.state.applicationInfo.id === 0 ? "New Application" : "Edit Application";
-    
+  
     return(
         <div>
             <Label style={{width: "100%", textAlign: "center", fontSize: 40}}>{this.state.customer.name}</Label>

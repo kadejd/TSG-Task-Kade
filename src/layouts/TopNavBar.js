@@ -22,7 +22,6 @@ export function TopNavBar(){
     const [customerList, setCustomerList] = useState([])
     const [SelectedCustomer, setSelectedCustomer] = useState({id: 0, name: "Customers"})
     const [navSelected, setNavSelected] =  useState(0);
-    console.log(window.location.pathname)
     const toggle = () => setIsOpen(!isOpen);
 
     //Gets all customers to produce a customer list for drop down and sets customer name as title if valid id is passed. 
@@ -62,7 +61,7 @@ export function TopNavBar(){
       currentCustomer.id = customer.id;
       currentCustomer.name = customer.name
       setSelectedCustomer(currentCustomer);
-   
+      window.location.reload()
     }
     return(
         <div style={{fontSize: 20}}>
@@ -71,10 +70,10 @@ export function TopNavBar(){
             <Collapse isOpen={isOpen} navbar>
               <Nav className="mr-auto" navbar>
                 <NavItem >
-                  <NavLink onClick={() => setNavSelected(1)}><Link style={{color: navSelected == 1 ? "black" : "grey"}} to="/dashboard">Dashboard</Link></NavLink>
+                  <NavLink onClick={() => {setNavSelected(1); window.location.reload() }}><Link style={{color: navSelected == 1 ? "black" : "grey"}} to="/dashboard">Dashboard</Link></NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink onClick={() => setNavSelected(2)}><Link style={{color: navSelected == 2 ? "black" : "grey"}} to="/calls">Calls</Link></NavLink>
+                  <NavLink onClick={() => {setNavSelected(2); window.location.reload()}}><Link style={{color: navSelected == 2 ? "black" : "grey"}} to="/calls">Calls</Link></NavLink>
                 </NavItem>
                 <UncontrolledDropdown nav inNavbar>
                   <DropdownToggle style={{color: navSelected == 3 ? "black" : "grey"}}  nav caret>
