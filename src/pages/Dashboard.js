@@ -78,11 +78,11 @@ buildStatistics(stats, customers){
 render()
 {
     return(
-        <Container style={{padding: 10}}>
-            <Row>
-                <ChartWidget  width={550} height={350} title="Open Calls" data={this.state.openCalls} labelOne="Total Calls" labelTwo="Responded" labelThree="Awaiting Response" dataKeyOne="totalCalls" dataKeyTwo="responded" dataKeyThree="awaitingResponse" />
-                <ChartWidget width={550} height={350} title="Closed Calls" data={this.state.closedCalls} labelOne="Total Calls" labelTwo="Satisfactory" labelThree="Unsatisfactory" dataKeyOne="totalCalls" dataKeyTwo="satisfactory" dataKeyThree="unsatisfactory" />
-                <ChartWidget chartType="Line" width={550} height={350} title="Last 3 Months" data={this.state.lastThreeMonths} labelOne="Month 1" labelTwo="Month 2" labelThree="Month 3" dataKeyOne="month1" dataKeyTwo="month2" dataKeyThree="month3" />
+        <Container style={{padding: 10, }}>
+            <Row >
+                <ChartWidget  width={500} height={350} title="Open Calls" data={this.state.openCalls} labelOne="Total Calls" labelTwo="Responded" labelThree="Awaiting Response" dataKeyOne="totalCalls" dataKeyTwo="responded" dataKeyThree="awaitingResponse" />
+                <ChartWidget width={500} height={350} title="Closed Calls" data={this.state.closedCalls} labelOne="Total Calls" labelTwo="Satisfactory" labelThree="Unsatisfactory" dataKeyOne="totalCalls" dataKeyTwo="satisfactory" dataKeyThree="unsatisfactory" />
+                <ChartWidget chartType="Line" width={500} height={350} title="Last 3 Months" data={this.state.lastThreeMonths} labelOne="Month 1" labelTwo="Month 2" labelThree="Month 3" dataKeyOne="month1" dataKeyTwo="month2" dataKeyThree="month3" />
             </Row>
         </Container>
     )

@@ -33,24 +33,18 @@ state = {
         id: 0,
       },
     applicationModalOpen: false,
-    currentPageApplications: 0,
-    currentPageCalls: 0,
 }
 
 componentDidMount(){
 this.getAllCustomerDataById(this.props.match.params.id);
-
 }
 
-handleApplicationPageClick = (e, index) => {
-    e.preventDefault();
-    this.setState({currentPageApplications: index})
-}
-
+//Toggles applications details modal
 toggleApplicationModal = () => {
     this.setState({applicationModalOpen: !this.state.applicationModalOpen})
   }
 
+//depending on if a application has been selected, the function will update or create an application.
   newOrUpdateApplication = () => {
     if(this.state.applicationInfo.id === 0)
     {
@@ -101,6 +95,7 @@ toggleApplicationModal = () => {
     }
   }
 
+//Gets all data avaiable for a customer and sets to state.
 getAllCustomerDataById = async(id) =>{
 
     var applicationRes = await GetApplicationsByCustomerId(id);
@@ -135,6 +130,7 @@ getAllCustomerDataById = async(id) =>{
 
 }
 
+//Calls GetCustomerById endpoint and stores results in state.
 getCustomerById = async (id) => {
     var customerRes = await GetCustomerById(id)
     if(customerRes.status === "OK")
@@ -143,6 +139,7 @@ getCustomerById = async (id) => {
     }
 }
 
+//Sets that current applicationInfo state to the currently selected application.
 selectCurrentApplication(id){
     var currentApplication = this.state.applicationInfo;
     currentApplication.id = this.state.applications[id].id
@@ -153,6 +150,7 @@ selectCurrentApplication(id){
     this.setState({applicationInfo: currentApplication}, this.toggleApplicationModal())
 }
 
+//Updates an applicationInfo field dependent on event.target.name.
 onChangeApplicationDetails = (event) => {
     var tempApplicationInfo = {...this.state.applicationInfo}
     if(event.target.type === "checkbox")
@@ -166,6 +164,7 @@ onChangeApplicationDetails = (event) => {
     this.setState({applicationInfo: tempApplicationInfo})
    }
   
+//Sets status to a call with given parameters, will notify on succes or error.
    setStatusOfCall(callId, status, callsArrayId){
     var patchData = {
         callId: callId,
@@ -187,11 +186,12 @@ onChangeApplicationDetails = (event) => {
     })
 }
 
+//Renders the applications state array into a table, with the ability to view applications details in a modal, or create a new application.
 renderApplicationTable(){
     return(
         <Card>
             <CardBody style={{overflow: 'scroll', height: 760}}>
-                <CardTitle style={{width: '100%', textAlign: 'center', fontSize: 20}}>Applications <Button onClick={this.toggleApplicationModal} style={{float: 'right'}} size="sm" color="primary">New</Button></CardTitle>
+                <CardTitle style={{width: '100%', textAlign: 'center', fontSize: 25}}>Applications <Button onClick={this.toggleApplicationModal} style={{float: 'right'}} size="sm" color="primary">New</Button></CardTitle>
                 <Table hover style={{fontSize: 13}}>
                     <thead>
                         <tr>
@@ -219,6 +219,7 @@ renderApplicationTable(){
     )
 }
 
+//toggles Status dropdown for calls table
 toggleStatusDropdown = (id) => {
     if(this.state.statusDropdownId == id)
     {
@@ -230,10 +231,12 @@ toggleStatusDropdown = (id) => {
     }
 }
 
+//Toggles Filter dropdown for calls status
 toggleFilterStatusDropdown = () => {
         this.setState({statusFilterDropdownOpen: !this.state.statusFilterDropdownOpen})
 }
 
+//Filters through calls array 
 filterByStatus = (status) => {
     if(status == "All")
     {
@@ -246,11 +249,12 @@ filterByStatus = (status) => {
     }
 }
 
+//Renders the Calls table, using Button dropdowns for both filtering and setting a status.
 renderCallsTable(){
     return(
         <Card>
             <CardBody style={{overflow: 'scroll', height: 760}}>
-                <CardTitle style={{width: "100%", textAlign: 'center', fontSize: 20 }}>Calls</CardTitle>
+                <CardTitle style={{width: "100%", textAlign: 'center', fontSize: 25 }}>Calls</CardTitle>
                 <Table  hover style={{fontSize: 13}}>
                     <thead>
                         <tr>
@@ -277,7 +281,6 @@ renderCallsTable(){
                     </thead>
                     <tbody>
                             {this.state.filteredCalls.map((call, callArrayId) => {
-                                console.log(call)
                                 return(
                                     <tr key={callArrayId}>
                                         <td>{call.application.name}</td>
@@ -327,7 +330,7 @@ render(){
                     {this.renderCallsTable()}
                 </Col>
                 <Col>
-                    <Row>
+                    <Row style={{paddingBottom: 40}}>
                     <ChartWidget width={200} height={300} title="Open Calls" data={[this.state.stats.openCalls]} labelOne="Total Calls" labelTwo="Responded" labelThree="Awaiting Response" dataKeyOne="totalCalls" dataKeyTwo="responded" dataKeyThree="awaitingResponse" />
                     <ChartWidget chartType="Pie" width={200} height={300} title="Closed Calls" data={this.state.pieClosedCalls} labelOne="Total Calls" labelTwo="Satisfactory" labelThree="Unsatisfactory" dataKeyOne="totalCalls" dataKeyTwo="satisfactory" dataKeyThree="unsatisfactory" />
                     </Row>

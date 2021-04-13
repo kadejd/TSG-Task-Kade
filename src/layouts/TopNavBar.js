@@ -20,10 +20,10 @@ export function TopNavBar(){
     const [isOpen, setIsOpen] = useState(false);
     const [customerList, setCustomerList] = useState([])
     const [SelectedCustomer, setSelectedCustomer] = useState({id: 0, name: "Customers"})
-    const [currentPath, setCurrentPath] = useState(window.location.pathname)
 
     const toggle = () => setIsOpen(!isOpen);
 
+    //Gets all customers to produce a customer list for drop down and sets customer name as title if valid id is passed. 
     useEffect(() => {
       GetAllCustomers().then(response => {
         if(response.status === "OK")
@@ -31,7 +31,7 @@ export function TopNavBar(){
           if(window.location.pathname.includes("/customerdetails"))
           {
             var customerId = parseInt(window.location.pathname.slice(17))
-            var currentCustomer = {} 
+            var currentCustomer = {id: 0, name: "Customers"} 
             response.data.map((customer, id) => {
               if(customer.id === customerId)
               {
@@ -64,36 +64,32 @@ export function TopNavBar(){
     }
     return(
         <div style={{fontSize: 20}}>
-        <Navbar color="light" light expand="md">
-        {/* <NavbarBrand href="/">Dashboard</NavbarBrand> */}
-        <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
-            <NavItem>
-              <NavLink style={{color: window.location.pathname.includes("/dashboard") == true ? "black" : "grey"}} href="/">Dashboard</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink style={{color: window.location.pathname.includes("/calls") == true ? "black" : "grey"}} href="/calls">Calls</NavLink>
-            </NavItem>
-            {/* <NavItem>
-              <NavLink href="/Applications">Applications</NavLink>
-            </NavItem> */}
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle style={{color: window.location.pathname.includes("/customerdetails") == true ? "black" : "grey"}}  nav caret>
-                {SelectedCustomer.name}
-              </DropdownToggle>
-              <DropdownMenu left>
-                {customerList.map((customer, id) => {
-                  return(
-                    <DropdownItem onClick={() => customerSelect(customer)}>{customer.name}</DropdownItem>
-                  )
-                })}
-              </DropdownMenu>
-            </UncontrolledDropdown>
-          </Nav>
-          <NavbarText></NavbarText>
-        </Collapse>
-      </Navbar>
+          <Navbar color="light" light expand="md">
+            <NavbarToggler onClick={toggle} />
+            <Collapse isOpen={isOpen} navbar>
+              <Nav className="mr-auto" navbar>
+                <NavItem>
+                  <NavLink style={{color: window.location.pathname.includes("/dashboard") == true ? "black" : "grey"}} href="/">Dashboard</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink style={{color: window.location.pathname.includes("/calls") == true ? "black" : "grey"}} href="/calls">Calls</NavLink>
+                </NavItem>
+                <UncontrolledDropdown nav inNavbar>
+                  <DropdownToggle style={{color: window.location.pathname.includes("/customerdetails") == true ? "black" : "grey"}}  nav caret>
+                    {SelectedCustomer.name}
+                  </DropdownToggle>
+                  <DropdownMenu left={true}>
+                    {customerList.map((customer, id) => {
+                      return(
+                        <DropdownItem key={id} onClick={() => customerSelect(customer)}>{customer.name}</DropdownItem>
+                      )
+                    })}
+                  </DropdownMenu>
+                </UncontrolledDropdown>
+              </Nav>
+              <NavbarText></NavbarText>
+            </Collapse>
+          </Navbar>
         </div>
 
     )

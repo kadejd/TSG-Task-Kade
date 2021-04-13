@@ -22,6 +22,7 @@ componentDidMount(){
 this.getAllCalls()
 }
 
+
 toggleStatusDropdown = (id) => {
     if(this.state.statusDropdownId == id)
     {
@@ -37,6 +38,7 @@ toggleFilterStatusDropdown = () => {
     this.setState({statusFilterDropdownOpen: !this.state.statusFilterDropdownOpen})
 }
 
+//filters currents calls by given status.
 filterByStatus = (status) => {
     if(status == "All")
     {
@@ -49,6 +51,8 @@ filterByStatus = (status) => {
     }
 }
 
+
+//Gets all call by all customers and sets them to statusList state.
 getAllCalls(){
     GetAllCustomers().then(async(response) => {
         const callList = await Promise.all(response.data.map(async (customer, id) => {
@@ -68,6 +72,7 @@ getAllCalls(){
     })
 }
 
+//Sets status to a call with given parameters, will notify on succes or error.
 setStatusOfCall(callId, status, callsArrayId){
     var patchData = {
         callId: callId,
@@ -79,7 +84,7 @@ setStatusOfCall(callId, status, callsArrayId){
         {
         var callsLogs = this.state.calls
         callsLogs[callsArrayId] = response.data;
-        this.setState({calls: callsLogs})
+        this.setState({calls: callsLogs, filteredCalls: callsLogs})
         toast.success("Status Changed To " + response.data.status.description )
         }
         else
@@ -126,9 +131,6 @@ buildCallsTableData(callList, customers)
 
 
 render(){
-    var callTitles = ["Application", "Description", "Customer Name", "Status"]
-    var colNames = ["applicationName", "description", "customerName", "status"]
-
 
     return(
         <Container style={{padding: 30}}>
