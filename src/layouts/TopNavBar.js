@@ -54,6 +54,15 @@ export function TopNavBar(){
           }
         }
       })
+
+      switch(window.location.pathname)
+      {
+        case "/dashboard" : setNavSelected(1);
+        break;
+        case "/calls" : setNavSelected(2);
+        break;
+        default: setNavSelected(3)
+      }
     }, [])
 
     function customerSelect(customer){
@@ -70,10 +79,10 @@ export function TopNavBar(){
             <Collapse isOpen={isOpen} navbar>
               <Nav className="mr-auto" navbar>
                 <NavItem >
-                  <NavLink onClick={() => {setNavSelected(1); window.location.reload() }}><Link style={{color: navSelected == 1 ? "black" : "grey"}} to="/dashboard">Dashboard</Link></NavLink>
+                  <NavLink onClick={() => { window.location.reload() }}><Link style={{color: navSelected == 1 ? "black" : "grey"}} to="/dashboard">Dashboard</Link></NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink onClick={() => {setNavSelected(2); window.location.reload()}}><Link style={{color: navSelected == 2 ? "black" : "grey"}} to="/calls">Calls</Link></NavLink>
+                  <NavLink onClick={() => {window.location.reload()}}><Link style={{color: navSelected == 2 ? "black" : "grey"}} to="/calls">Calls</Link></NavLink>
                 </NavItem>
                 <UncontrolledDropdown nav inNavbar>
                   <DropdownToggle style={{color: navSelected == 3 ? "black" : "grey"}}  nav caret>
@@ -82,7 +91,7 @@ export function TopNavBar(){
                   <DropdownMenu left={true}>
                     {customerList.map((customer, id) => {
                       return(
-                        <DropdownItem key={id} onClick={() => {customerSelect(customer); setNavSelected(3)}}><Link to={`/customerdetails/${customer.id}`}>{customer.name} </Link></DropdownItem>
+                        <DropdownItem key={id} onClick={() => {customerSelect(customer);}}><Link to={`/customerdetails/${customer.id}`}>{customer.name} </Link></DropdownItem>
                       )
                     })}
                   </DropdownMenu>
