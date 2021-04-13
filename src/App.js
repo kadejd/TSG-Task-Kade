@@ -1,24 +1,29 @@
 import logo from './logo.svg';
 import './App.css';
+import React, {useState, useEffect} from 'react';
+import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
+import Customers from './pages/Customers';
+import CustomerDetails from './pages/CustomerDetails'
+import Dashboard from './pages/Dashboard';
+import Calls from './pages/Calls';
+import {ToastContainer} from 'react-toastify';
+import {TopNavBar} from './layouts/TopNavBar'
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+    <TopNavBar />
+      <Switch>
+        <Route path="/customerdetails/:id" exact component={CustomerDetails}/>
+        <Route path="/calls" exact component={Calls}/>
+        <Route path="/dashboard" exact component={Dashboard}/>
+        <Redirect to="/dashboard"/>
+      </Switch>
+    <ToastContainer />
+    </Router>
   );
 }
 
